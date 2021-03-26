@@ -70,7 +70,7 @@ export default {
     language: {
       type: String,
       required: false,
-      default: 'zh-CN'
+      default: 'zh-CN.js'
     }
   },
   data() {

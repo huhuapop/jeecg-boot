@@ -48,6 +48,31 @@ import '@/components/jeecg/JVxeTable/install'
 import '@/components/JVxeCells/install'
 //表单验证
 import { rules } from '@/utils/rules'
+//导入语言
+import VueI18n from 'vue-i18n'
+Vue.use(VueI18n)
+
+// // 注册i18n实例并引入语言文件，文件格式等下解析
+const i18n =new VueI18n({
+    // locale:'en-US',
+  locale:'zh-CN',
+    messages:{
+      // 'zh-CN':require('@/components/lang/zh-CN.js'),
+      // 'en-US':require('@/components/lang/en-US.js')
+      'en-US':{
+        message:{
+          login:"Login"
+        }
+      },
+      'zh-CN':{
+        message:{
+          login:"登陆"
+        }
+      }
+    }
+})
+console.log('i18n:', i18n)
+// console.log('language:', i18n)
 Vue.prototype.rules = rules
 Vue.config.productionTip = false
 Vue.use(Storage, config.storageOptions)
@@ -69,6 +94,7 @@ function main() {
   new Vue({
     router,
     store,
+    i18n,
     mounted () {
       store.commit('SET_SIDEBAR_TYPE', Vue.ls.get(SIDEBAR_TYPE, true))
       store.commit('TOGGLE_THEME', Vue.ls.get(DEFAULT_THEME, config.navTheme))
